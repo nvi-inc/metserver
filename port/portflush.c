@@ -1,7 +1,7 @@
 #include <termio.h>
 #include <stdio.h>
 
-int portflush(port)
+int portflush_(port)
 int *port;
 
 {

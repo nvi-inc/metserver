@@ -1,6 +1,6 @@
 #include <termio.h>
 
-int portwrite(port, buff, len)
+int portwrite_(port, buff, len)
 int *port;
 char *buff;    /* hollerith */
 int *len;

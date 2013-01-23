@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <termio.h>
 
-int portbaud(port, baud)   /* only to reset MAT BAUD */
+int portbaud_(port, baud)   /* only to reset MAT BAUD */
 int *port;
 long *baud;
 {

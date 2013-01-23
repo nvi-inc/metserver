@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <unistd.h>
 
-int portclose(port)
+int portclose_(port)
 int *port;
 
 {

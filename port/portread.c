@@ -3,9 +3,21 @@
 #include <sys/types.h>
 #include <sys/times.h>
 
-long times();
+static unsigned long ticks_off;
+static void ticks0()
+{
+  struct tms buf;
+  time_t t;
 
-int portread(port, buff, count, maxc, termch, to)
+  ticks_off= (unsigned long) times(&buf);
+}
+
+static long ticks(struct tms *buf)
+{
+  return (long) ((unsigned long) times(buf) - ticks_off);
+}
+
+int portread_(port, buff, count, maxc, termch, to)
 int *port, *count, *maxc, *to;
 int *termch;
 unsigned char *buff;   /* hollerith */
@@ -26,10 +38,12 @@ unsigned char *buff;   /* hollerith */
   long end;
   int iret;
 
+  ticks0();
+
   if( *maxc<=0)                /* no buffer extent */
     return -1;
 
-  end= *to >0 ? times(&tms_buff)+*to+1 : -1;  /* calculate ending time */
+  end= *to >0 ? ticks(&tms_buff)+*to+1 : -1;  /* calculate ending time */
   *count=-1;
   inch=-1;
 
@@ -44,14 +58,14 @@ unsigned char *buff;   /* hollerith */
       iret=read(*port,&inch,1);
       if (iret == 1)
         break;
-      else if (end > 0 && end-times(&tms_buff) <= 0)
+      else if (end > 0 && end-ticks(&tms_buff) <= 0)
         return -2;                    /* time-out */
       else if(iret == -1)
         return -3;                    /* read error */
     }
     *(buff)++=inch;
   }
-/*   printf(" to %d actual %d\n",*to,times(&tms_buff)-(end-*to-1));*/
+/*   printf(" to %d actual %d\n",*to,ticks(&tms_buff)-(end-*to-1));*/
   return 0;
 
 }

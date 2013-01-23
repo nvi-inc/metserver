@@ -1,6 +1,6 @@
 #include <termios.h>
 
-int portoutdrain(port)
+int portoutdrain_(port)
 int *port;
 /* portoutdrain waits for the output queue to drain for this port */
 {

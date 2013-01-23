@@ -10,7 +10,7 @@
 #include "/usr/src/linux/drivers/char/digi.h"  /* yechh, abs. path... */
 #endif
 
-int portopen(port, name, len, baud, parity, bits, stop)
+int portopen_(port, name, len, baud, parity, bits, stop)
 int *port;
 char *name;   /* hollerith */
 int *len;
