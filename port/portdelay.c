@@ -1,8 +1,8 @@
 /*
- * Copyright (c) 2020 NVI, Inc.
+ * Copyright (c) 2020, 2023 NVI, Inc.
  *
- * This file is part of VLBI Field System
- * (see http://github.com/nvi-inc/fs).
+ * This file is part of VLBI metserver
+ * (see http://github.com/nvi-inc/metserver).
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
