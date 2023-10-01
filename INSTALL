@@ -112,17 +112,17 @@ IMPORTANT NOTE: You must supply values (even if the default) for all
     init.d, which is deprecated. See #3 below for systemd, which is preferred,
     instructions.
 
-    Special NOTICE: Please edit the script in /etc/init.d to use your port locations
-                    and other settings before you proceed.
-
-    Modify MET= and WIND= with your own port numbers and PORT= with your
-    own network port number (if not default) in the metserver.sh file.
-    Also set LOCAL=, DEVICE=, and FLAGS= as appropriate.
-
     prompt> log in as root
     prompt> cd /etc/init.d
     prompt> cp /usr2/metserver/metserver.sh .
     prompt> update-rc.d metserver.sh defaults
+
+    Special NOTICE: Please edit the script in /etc/init.d/metserver.sh to use
+                    your port locations and other settings before you proceed.
+
+                    Modify MET= and WIND= with your own port numbers and PORT= with your
+                    own network port number (if not default).
+                    Also set REMOTE=, DEVICE=, and FLAGS= as appropriate.
 
     Everytime you reboot your system, the metserver will start automatically.
 
@@ -156,17 +156,21 @@ IMPORTANT NOTE: You must supply values (even if the default) for all
     systemd, which is preferred. See #2 above for init.d, which is deprecated,
     instructions.
 
-    Special NOTICE: Please edit the script in /etc/systemd/system to use your port locations
-                    and other settings before you proceed.
-
-    Modify MET= and WIND= with your own port numbers and PORT= with your
-    own network port number (if not default) in the metserver.sh file.
-    Also set LOCAL=, DEVICE=, and FLAGS= as appropriate.
-
     prompt> log in as root
     prompt> cd /usr2/metserver
     prompt> cp -i metserver.service /etc/systemd/system/
     prompt> chmod 644 /etc/systemd/system/metserver.service
+    prompt> cp -i metserver_systemd.sh /usr/local/sbin
+    prompt> chmod 744 /usr/local/sbin/metserver_systemd.sh
+
+    Special NOTICE: Please edit the script in
+                    /usr/local/sbin/metserver_system.sh to use your port locations
+                    and other settings before you proceed.
+
+                    Modify MET= and WIND= with your own port numbers and PORT= with
+                    your own network port number (if not default).
+                    Also set REMOTE=, DEVICE=, and FLAGS= as appropriate.
+
     prompt> systemctl start metserver
     prompt> systemctl enable metserver
 
