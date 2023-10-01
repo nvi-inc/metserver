@@ -45,8 +45,8 @@ on errors.
 example:
    prompt> ps -ef | grep met
 
-   prog     13526     1  0 16:39 ?        00:00:00 /usr2/st/metserver/metserver/dev/ttyS19 /dev/ttyS18
-   root     13630     1  0 16:53 pts/3    00:00:00 /usr2/st/metclient/metclient/usr2/st/metclient/metlog.ctl
+   prog     13526     1  0 16:39 ?        00:00:00 /usr2/metserver/metserver/dev/ttyS19 /dev/ttyS18
+   root     13630     1  0 16:53 pts/3    00:00:00 /usr2/metclient/metclient/usr2/control/metlog.ctl
    prog     13815 13533  0 17:43 pts/3    00:00:00 grep met
 
    prompt> kill 13526 13630

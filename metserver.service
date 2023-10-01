@@ -3,7 +3,7 @@ Description=metserver service.
 
 [Service]
 Type=simple
-ExecStart=/bin/bash /usr2/st/metserver/metserver_systemd.sh
+ExecStart=/bin/bash /usr2/metserver/metserver_systemd.sh
 
 [Install]
 WantedBy=multi-user.target

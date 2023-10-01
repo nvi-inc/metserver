@@ -21,7 +21,7 @@
 #
 # metserver MET server for gathering weather information.
 #
-DAEMON=/usr2/st/metserver/metserver
+DAEMON=/usr2/metserver/metserver
 #MET=/dev/null
 MET=/dev/ttyS1
 #WIND=/dev/null

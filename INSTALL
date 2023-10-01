@@ -20,9 +20,7 @@ Field System software.
      |-- INSTALL     - Installation instructions for server and client(s).
      |-- README      - Information.
      |-- metserver.sh - bootup script for init.d.
-     |-- metserver.sh.example - example bootup script for systemd.
      |-- metserver_systemd.sh - bootup script for init.d.
-     |-- metserver_systemd.sh.example - example bootup script for systemd.
      |-- metserver   - executable.
      |-- port        - Source directory for opening and closing selected ports.
      |   |-- Makefile - The make file for making port.a library archive.
@@ -58,15 +56,13 @@ Field System software.
 
 3.) Getting the metserver and producing an executable.
 
+   prompt> log in as root
+   prompt> cd /usr2
+   prompt> git clone https://github.com/nvi-inc/metserver
+   prompt> chown -R prog.rtx metclient
    prompt> log in as prog
-   prompt> cd /usr2/fs/st.default/st-0.0.0
-   prompt> cp -a metserver /usr2/st
-   prompt> cd /usr2/st/metserver
+   prompt> cd /usr2/metserver
    prompt> make
-
-   NOTE: Since this doesn't need to be remade with each Field System
-         update, please do not include the metserver directory in the 
-         global /usr2/st/Makefile.
 
 
 STARTING MET SERVER:
@@ -109,14 +105,14 @@ IMPORTANT NOTE: You must supply values (even if the default) for all
                       0x2   ignore temperature errors
                       0x4   ignore pressure errors
 
-    prompt> /usr2/st/metserver/metserver /dev/ttyS19 /dev/ttyS18 50001 remote MET4A 0x3
-                                         (metsensor) (windsensor)
+    prompt> /usr2/metserver/metserver /dev/ttyS19 /dev/ttyS18 50001 remote MET4A 0x3
+                                      (metsensor) (windsensor)
 
 2.) If you would like metserver to startup at boot time and your system uses
     init.d, which is deprecated. See #3 below for systemd, which is preferred,
     instructions.
 
-    Special NOTICE: Please edit the script to use your port locations
+    Special NOTICE: Please edit the script in /etc/init.d to use your port locations
                     and other settings before you proceed.
 
     Modify MET= and WIND= with your own port numbers and PORT= with your
@@ -125,7 +121,7 @@ IMPORTANT NOTE: You must supply values (even if the default) for all
 
     prompt> log in as root
     prompt> cd /etc/init.d
-    prompt> cp /usr2/st/metserver/metserver.sh .
+    prompt> cp /usr2/metserver/metserver.sh .
     prompt> update-rc.d metserver.sh defaults
 
     Everytime you reboot your system, the metserver will start automatically.
@@ -160,7 +156,7 @@ IMPORTANT NOTE: You must supply values (even if the default) for all
     systemd, which is preferred. See #2 above for init.d, which is deprecated,
     instructions.
 
-    Special NOTICE: Please edit the script to use your port locations
+    Special NOTICE: Please edit the script in /etc/systemd/system to use your port locations
                     and other settings before you proceed.
 
     Modify MET= and WIND= with your own port numbers and PORT= with your
@@ -168,7 +164,7 @@ IMPORTANT NOTE: You must supply values (even if the default) for all
     Also set LOCAL=, DEVICE=, and FLAGS= as appropriate.
 
     prompt> log in as root
-    prompt> cd /usr2/st/metserver
+    prompt> cd /usr2/metserver
     prompt> cp -i metserver.service /etc/systemd/system/
     prompt> chmod 644 /etc/systemd/system/metserver.service
     prompt> systemctl start metserver

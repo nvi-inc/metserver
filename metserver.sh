@@ -23,10 +23,10 @@
 #
 #	    Modified for Debian GNU/Linux
 #
-# Version:  @(#)metserver  1.0.0  07-Jul-2003  rgonzale@gemini.gsfc.nasa.gov
-# Version:  @(#)metserver  1.0.1  04-May-2012  Ed.Himwich@nasa.gov
+# Version:  @(#)metserver  1.0.0  07-Jul-2003  rgonzale
+# Version:  @(#)metserver  1.0.1  04-May-2012  Ed.Himwich
 #
-DAEMON=/usr2/st/metserver/metserver
+DAEMON=/usr2/metserver/metserver
 NAME=metserver
 DESC="MET Server"
 MET=/dev/null
