@@ -61,6 +61,14 @@ Field System software.
    prompt> git clone https://github.com/nvi-inc/metserver
    prompt> chown -R prog.rtx metclient
    prompt> log in as prog
+
+   NOTE: For FSL9 and later, if not already set in the prog account,
+         you will need to set environment variable 'FS_SERIAL_CLOCAL'
+         to '1'. For bash, use: 'export FS_SERIAL_CLOCAL=1'. For tcsh,
+         use: 'setenv FS_SERIAL_CLOCAL 1'. You should consider putting
+         these commands in your ~/.profile (bash) or ~/.login (tcsh)
+         file for future remakes.
+
    prompt> cd /usr2/metserver
    prompt> make
 
